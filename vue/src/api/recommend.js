@@ -28,12 +28,7 @@ export function getDiscList() {
     ein: 29
   })
   return axios.get(url, {
-    params: data,
-    url: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
-    headers: {
-      referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
-    }
+    params: data
   }).then((res) => {
     return Promise.resolve(res.data)
   })
