@@ -14,7 +14,7 @@ export function getRecommend() {
 }
 
 export function getDiscList() {
-  const url = '/api/getDiscList'
+  const url = 'https://ysu-gjx.github.io/vue/api/getDiscList'
 
   const data = Object.assign({}, commonParams, {
     needNewCode: 0,
@@ -28,7 +28,12 @@ export function getDiscList() {
     ein: 29
   })
   return axios.get(url, {
-    params: data
+    params: data,
+    url: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
+    headers: {
+      referer: 'https://c.y.qq.com/',
+      host: 'c.y.qq.com'
+    }
   }).then((res) => {
     return Promise.resolve(res.data)
   })
