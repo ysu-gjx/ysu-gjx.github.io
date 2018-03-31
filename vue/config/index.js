@@ -58,7 +58,7 @@ module.exports = {
         '^/': ''
       }
     }},
-    host: 'https://ysu-gjx.github.io/vue', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 9000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
 
     /**
