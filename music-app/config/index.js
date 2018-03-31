@@ -44,14 +44,16 @@ module.exports = {
   },
 
   build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    // Template for vue.html
+    index: path.resolve(__dirname, '../dist/vue.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
+    host: 'ysu-gjx.github.io/music-app', // can be overwritten by process.env.HOST
+    port: 9000,
     /**
      * Source Maps
      */
