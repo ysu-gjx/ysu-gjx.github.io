@@ -1,6 +1,6 @@
-# music-app
+# vuedemo2
 
-> music app
+> music音乐播放器
 
 ## Build Setup
 
