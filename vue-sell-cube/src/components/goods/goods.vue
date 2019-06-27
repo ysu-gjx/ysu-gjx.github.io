@@ -30,15 +30,28 @@
                   <span class="now">￥{{food.price}}</span>
                   <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
+                <div class="cart-control-wrapper">
+                  <cart-control :food="food"></cart-control>
+                </div>
               </div>
             </li>
           </ul>
         </cube-scroll-nav-panel>
       </cube-scroll-nav>
     </div>
+    <div class="shop-cart-wrapper">
+      <shop-cart
+        ref="shopCart"
+        :select-foods="selectFoods"
+        :delivery-price="seller.deliveryPrice"
+        :min-price="seller.minPrice"
+      ></shop-cart>
+    </div>
   </div>
 </template>
 <script>
+import ShopCart from 'components/shop-cart/shop-cart'
+import CartControl from 'components/cart-control/cart-control'
 import { getGoods } from 'api/index'
 export default {
   name: 'goods',
@@ -57,12 +70,32 @@ export default {
       }
     }
   },
+  computed: {
+    seller () {
+      return this.data.seller
+    },
+    selectFoods () {
+      let ret = []
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            ret.push(food)
+          }
+        })
+      })
+      return ret
+    }
+  },
   methods: {
     fetch () {
       getGoods().then(goods => {
         this.goods = goods
       })
     }
+  },
+  components: {
+    ShopCart,
+    CartControl
   }
 }
 </script>
@@ -118,6 +151,7 @@ export default {
     display: flex
     margin: 18px
     padding-bottom: 18px
+    position: relative
     &:last-child
       border-none()
       margin-bottom: 0
